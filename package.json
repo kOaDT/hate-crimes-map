@@ -1,0 +1,45 @@
+{
+  "name": "hate-crime-map",
+  "version": "0.1.0",
+  "author": "Caleb",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prettier:check": "./node_modules/.bin/prettier --check .",
+    "prettier": "./node_modules/.bin/prettier --write .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{tsx,ts,js}": "eslint --no-cache --fix",
+    "*.{tsx,ts,js,css,md}": "prettier --write"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "mapbox-gl": "^3.9.3",
+    "next": "15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-map-gl": "^7.1.8",
+    "recharts": "^2.15.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9.19.0",
+    "eslint-config-next": "15.1.6",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "postcss": "^8",
+    "prettier": "^3.4.2",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
