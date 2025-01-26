@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'HCM',
-  description: 'HCM - Hate Crimes Map is an open source project to map hate crimes around the world.',
+  title: 'Hate Crimes Map',
+  description: 'Work in progress - Hate Crimes Map is an open source project to map hate crimes around the world.',
 };
 
 export default function RootLayout({
