@@ -1,14 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Map, { Source, Layer } from 'react-map-gl';
+import { useEffect, useState, useMemo } from 'react';
+import ReactMap, { Source, Layer } from 'react-map-gl';
 import { countryCoordinates } from '../helpers/countryCoordinates';
-import CountryModal from './CountryModal';
+import CountryModal from './Modal';
 
 export interface ICrime {
-  id: string;
-  latitude: number;
-  longitude: number;
   Date: string;
   Country: string;
   'Bias motivations': string;
@@ -26,23 +23,49 @@ export default function MapComponent({ crimes }: IProps) {
   const [loaded, setLoaded] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
+  const [processedData, setProcessedData] = useState<ICrime[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const crimesByCountry = useMemo(() => {
+    return crimes.reduce(
+      (acc, crime) => {
+        const country = crime.Country;
+        if (!acc[country]) {
+          acc[country] = [];
+        }
+        acc[country].push(crime);
+        return acc;
+      },
+      {} as Record<string, ICrime[]>
+    );
+  }, [crimes]);
 
   useEffect(() => {
     setMounted(true);
   }, []);
-  if (!mounted) return null;
 
-  const crimesByCountry = crimes.reduce(
-    (acc, crime) => {
-      const country = crime.Country;
-      if (!acc[country]) {
-        acc[country] = [];
-      }
-      acc[country].push(crime);
-      return acc;
-    },
-    {} as Record<string, ICrime[]>
-  );
+  useEffect(() => {
+    if (!selectedCountry) return;
+    const processData = () => {
+      setIsLoading(true);
+
+      const uniqueMap = new Map();
+      crimesByCountry[selectedCountry].forEach((crime) => {
+        const key = `${crime.Date}-${crime['Type of incident']}-${crime['Bias motivations']}-${crime.Source}-${crime.Description}`;
+        uniqueMap.set(key, crime);
+      });
+      const uniqueAndSortedData = Array.from(uniqueMap.values()).sort(
+        (a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime()
+      );
+
+      setProcessedData(uniqueAndSortedData);
+      setIsLoading(false);
+    };
+
+    processData();
+  }, [crimesByCountry, selectedCountry]);
+
+  if (!mounted) return null;
 
   const circleData = {
     type: 'FeatureCollection',
@@ -71,7 +94,7 @@ export default function MapComponent({ crimes }: IProps) {
         cursor: hoveredCountry ? 'pointer' : 'default',
       }}
     >
-      <Map
+      <ReactMap
         initialViewState={{
           longitude: 10,
           latitude: 50,
@@ -117,16 +140,16 @@ export default function MapComponent({ crimes }: IProps) {
             }}
           />
         </Source>
-      </Map>
+      </ReactMap>
 
       {selectedCountry && (
-        <CountryModal
-          country={selectedCountry}
-          data={[...new Set(crimesByCountry[selectedCountry])].sort(
-            (a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime()
+        <div>
+          {isLoading ? (
+            <div className='loader'>Loading...</div>
+          ) : (
+            <CountryModal country={selectedCountry} data={processedData} onClose={() => setSelectedCountry(null)} />
           )}
-          onClose={() => setSelectedCountry(null)}
-        />
+        </div>
       )}
     </div>
   );
