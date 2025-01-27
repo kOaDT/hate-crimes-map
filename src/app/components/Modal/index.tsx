@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import CountryHeader from './CountryHeader';
 import DesktopTable from './DesktopTable';
 import MobileList from './MobileList';
+import CrimesOverTime from './charts/CrimesOverTime';
 
 countries.registerLocale(enLocale);
 
@@ -45,6 +46,7 @@ export default function CountryModal({ country, data, onClose }: CountryModalPro
         <CountryHeader country={country} countryCode={countryCode} />
 
         <div className='overflow-y-auto flex-1'>
+          <CrimesOverTime data={data} />
           <DesktopTable data={data} />
           <MobileList data={data} />
         </div>
