@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Map, { Source, Layer } from 'react-map-gl';
 import { countryCoordinates } from '../helpers/countryCoordinates';
+import CountryModal from './CountryModal';
 
 export interface ICrime {
   id: string;
@@ -23,6 +24,8 @@ interface IProps {
 export default function MapComponent({ crimes }: IProps) {
   const [mounted, setMounted] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+  const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -40,8 +43,6 @@ export default function MapComponent({ crimes }: IProps) {
     },
     {} as Record<string, ICrime[]>
   );
-
-  console.log(crimesByCountry);
 
   const circleData = {
     type: 'FeatureCollection',
@@ -67,6 +68,7 @@ export default function MapComponent({ crimes }: IProps) {
         width: '100vw',
         height: '100vh',
         overflow: 'hidden',
+        cursor: hoveredCountry ? 'pointer' : 'default',
       }}
     >
       <Map
@@ -83,6 +85,24 @@ export default function MapComponent({ crimes }: IProps) {
         reuseMaps
         interactiveLayerIds={loaded ? ['circles'] : []}
         onLoad={() => setLoaded(true)}
+        onMouseEnter={(event) => {
+          const features = event.features || [];
+          const clickedCountry = features[0]?.properties?.country;
+          if (clickedCountry) {
+            setHoveredCountry(clickedCountry);
+          }
+        }}
+        onMouseLeave={() => {
+          setHoveredCountry(null);
+        }}
+        onClick={(event) => {
+          const features = event.features || [];
+          const clickedCountry = features[0]?.properties?.country;
+          if (clickedCountry) {
+            setHoveredCountry(null);
+            setSelectedCountry(clickedCountry);
+          }
+        }}
       >
         <Source type='geojson' data={circleData}>
           <Layer
@@ -98,6 +118,16 @@ export default function MapComponent({ crimes }: IProps) {
           />
         </Source>
       </Map>
+
+      {selectedCountry && (
+        <CountryModal
+          country={selectedCountry}
+          data={[...new Set(crimesByCountry[selectedCountry])].sort(
+            (a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime()
+          )}
+          onClose={() => setSelectedCountry(null)}
+        />
+      )}
     </div>
   );
 }
