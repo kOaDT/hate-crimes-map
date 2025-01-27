@@ -12,9 +12,49 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://hate-crimes-map.vercel.app';
+const screenshotUrl = `${baseUrl}/screen.png`;
+
 export const metadata: Metadata = {
   title: 'Hate Crimes Map',
-  description: 'Work in progress - Hate Crimes Map is an open source project to map hate crimes around the world.',
+  description:
+    'This project aims to visualize hate crime data to bring visibility to crimes that are often invisible or normalized by society. By making this data accessible and visual, we hope to raise awareness and contribute to a better understanding of these issues.',
+  icons: {
+    icon: [
+      {
+        url: screenshotUrl,
+        sizes: '32x32',
+        type: 'image/jpeg',
+      },
+      {
+        url: screenshotUrl,
+        sizes: '16x16',
+        type: 'image/jpeg',
+      },
+    ],
+    apple: {
+      url: screenshotUrl,
+      sizes: '180x180',
+      type: 'image/jpeg',
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: baseUrl,
+    siteName: 'Hate Crimes Map',
+    images: [
+      {
+        url: screenshotUrl,
+        width: 1200,
+        height: 630,
+        alt: 'Hate Crimes Map',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({

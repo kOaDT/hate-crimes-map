@@ -1,0 +1,21 @@
+/* TEAM */
+Developer: caleb
+Contact: caleb.pro@pm.me
+Location: Earth
+
+/* SITE */
+Last update: 2025
+Language: English
+Standards: HTML5, CSS3, TypeScript
+Components: Next.js, React, Tailwind CSS
+
+/* DATA */
+Data: OSCE Hate Crime Data
+Source: https://hatecrime.osce.org/hate-crime-data
+
+/* HOSTING */
+Hosting: Vercel
+
+/* OPEN SOURCE */
+Open Source: Yes
+Repository: https://github.com/kOaDT/hate-crimes-map

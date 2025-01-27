@@ -80,11 +80,16 @@ export default function About() {
           </p>
         </section>
 
+        <section>
+          <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Hosting</h2>
+          <p className='text-gray-600 mb-4'>This website is hosted on Vercel.</p>
+        </section>
+
         <section className='mb-8'>
           <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Open Source Project</h2>
           <p className='text-gray-600 mb-4'>
-            This is an open-source project and you are welcome to contribute! You can find the source code and
-            contribution guidelines on our GitHub repository:{' '}
+            This is an open-source project built with Next.js, TypeScript, Tailwind CSS and Mapbox. You are welcome to
+            contribute! You can find the source code and contribution guidelines on our GitHub repository:{' '}
             <a
               href='https://github.com/kOaDT/hate-crimes-map'
               className='text-blue-600 hover:text-blue-800 underline'
@@ -93,6 +98,12 @@ export default function About() {
             >
               GitHub Repository
             </a>
+          </p>
+        </section>
+
+        <section className='mb-8'>
+          <p className='text-gray-600 mb-4'>
+            {new Date().getFullYear()} - v{process.env.npm_package_version || '1.0.0'}
           </p>
         </section>
 
