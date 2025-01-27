@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo } from 'react';
 import ReactMap, { Source, Layer } from 'react-map-gl';
-import { countryCoordinates } from '../helpers/countryCoordinates';
+import { countryCoordinates } from '../utils/countryCoordinates';
 import CountryModal from './Modal';
 
 export interface ICrime {
