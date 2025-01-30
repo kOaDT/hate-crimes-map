@@ -18,25 +18,48 @@ const screenshotUrl = `${baseUrl}/screen.png`;
 export const metadata: Metadata = {
   title: 'Hate Crimes Map',
   description:
-    'This project aims to visualize hate crime data to bring visibility to crimes that are often invisible or normalized by society. By making this data accessible and visual, we hope to raise awareness and contribute to a better understanding of these issues.',
+    'This project aims to visualize hate crime data to bring visibility to crimes that are often invisible or normalized by society.',
+  manifest: '/site.webmanifest',
   icons: {
     icon: [
       {
-        url: screenshotUrl,
-        sizes: '32x32',
-        type: 'image/jpeg',
+        url: '/favicon.ico',
+        sizes: 'any',
+        type: 'image/x-icon',
       },
       {
-        url: screenshotUrl,
+        url: '/favicon.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
+      },
+      {
+        url: '/favicon-96x96.png',
+        sizes: '96x96',
+        type: 'image/png',
+      },
+      {
+        url: '/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+      {
+        url: '/favicon-16x16.png',
         sizes: '16x16',
-        type: 'image/jpeg',
+        type: 'image/png',
       },
     ],
     apple: {
-      url: screenshotUrl,
+      url: '/apple-touch-icon.png',
       sizes: '180x180',
-      type: 'image/jpeg',
+      type: 'image/png',
     },
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/web-app-manifest-192x192.png',
+        color: '#ffffff',
+      },
+    ],
   },
   openGraph: {
     type: 'website',
@@ -46,8 +69,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: screenshotUrl,
-        width: 1200,
-        height: 630,
+        width: 1870,
+        height: 935,
         alt: 'Hate Crimes Map',
       },
     ],
