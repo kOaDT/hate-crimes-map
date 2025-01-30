@@ -55,7 +55,7 @@ export default function Legend({ thresholds, colors, biasMotivations, selectedBi
         {!isFilterOpen && (
           <>
             <div className='legend-divider'></div>
-            <h3>Number of crimes</h3>
+            <h3>Number of reported crimes</h3>
             <h4>
               Since 2016
               {selectedBiases.length > 0 && (
