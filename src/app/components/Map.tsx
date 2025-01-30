@@ -26,22 +26,41 @@ export default function MapComponent({ crimes }: IProps) {
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
   const [processedData, setProcessedData] = useState<ICrime[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedBiases, setSelectedBiases] = useState<string[]>([]);
 
-  const crimesByCountry = useMemo(() => {
-    return crimes.reduce(
+  const topBiasMotivations = useMemo(() => {
+    const biasCount = crimes.reduce(
       (acc, crime) => {
-        const country = crime.Country;
-        if (!acc[country]) {
-          acc[country] = [];
-        }
-        acc[country].push(crime);
+        const bias = crime['Bias motivations'];
+        acc[bias] = (acc[bias] || 0) + 1;
         return acc;
       },
-      {} as Record<string, ICrime[]>
+      {} as Record<string, number>
     );
+
+    return Object.entries(biasCount)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 10)
+      .map(([bias]) => bias);
   }, [crimes]);
 
-  const thresholds = [10, 50, 100, 500, 2000, 5000];
+  const crimesByCountry = useMemo(() => {
+    return crimes
+      .filter((crime) => selectedBiases.length === 0 || selectedBiases.includes(crime['Bias motivations']))
+      .reduce(
+        (acc, crime) => {
+          const country = crime.Country;
+          if (!acc[country]) {
+            acc[country] = [];
+          }
+          acc[country].push(crime);
+          return acc;
+        },
+        {} as Record<string, ICrime[]>
+      );
+  }, [crimes, selectedBiases]);
+
+  const thresholds = [10, 50, 100, 500, 1000, 5000];
   const colors = [
     '#FEB24C', // light orange
     '#FD8D3C', // orange
@@ -105,7 +124,13 @@ export default function MapComponent({ crimes }: IProps) {
         cursor: hoveredCountry ? 'pointer' : 'default',
       }}
     >
-      <Legend thresholds={thresholds} colors={colors} />
+      <Legend
+        thresholds={thresholds}
+        colors={colors}
+        biasMotivations={topBiasMotivations}
+        selectedBiases={selectedBiases}
+        onBiasChange={setSelectedBiases}
+      />
 
       <ReactMap
         initialViewState={{
@@ -170,7 +195,7 @@ export default function MapComponent({ crimes }: IProps) {
       </ReactMap>
 
       {selectedCountry && (
-        <div>
+        <div className='modal-wrapper'>
           {isLoading ? (
             <div className='loader'>Loading...</div>
           ) : (

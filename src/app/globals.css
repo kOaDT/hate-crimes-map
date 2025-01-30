@@ -7,13 +7,6 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #f9fafb;
-    --foreground: #171717;
-  }
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
@@ -24,7 +17,6 @@ body {
   cursor: pointer;
 }
 
-/* Modal Styles */
 .modal-overlay {
   @apply fixed inset-0 z-50 overflow-y-auto;
 }
@@ -51,7 +43,6 @@ body {
   @apply px-4 pt-5 pb-4 sm:p-6 sm:pb-4 max-h-[80vh] overflow-y-auto;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -72,7 +63,6 @@ body {
   }
 }
 
-/* Scrollbar styles */
 .modal-body::-webkit-scrollbar {
   @apply w-2;
 }
@@ -90,42 +80,263 @@ body {
 }
 
 .legend {
-  @apply fixed bottom-20 right-4 bg-white p-2.5 rounded-lg shadow-md z-10 max-w-[200px] transition-transform duration-300 ease-in-out;
+  @apply fixed bottom-4 right-4 bg-white rounded-lg shadow-md z-10;
+  width: calc(100% - 2rem);
+  max-width: 320px;
 }
 
-.legend h3 {
-  @apply m-0 text-sm font-semibold;
+.legend-content {
+  @apply p-4;
 }
 
-.legend h4 {
-  @apply m-0 mb-2 text-xs font-normal;
+.legend-filter-button {
+  @apply w-full px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 
+         rounded-lg transition-colors duration-200 flex items-center 
+         justify-center gap-2 font-medium;
+}
+
+.legend-bias-list {
+  @apply fixed inset-0 bg-white z-50;
+  display: none;
+}
+
+.legend-bias-list.open {
+  @apply block;
+}
+
+.bias-list-header {
+  @apply sticky top-0 bg-white p-4 border-b border-gray-200;
+}
+
+.mobile-back-button {
+  @apply text-blue-600 text-lg font-medium mb-4;
+}
+
+.bias-list-content {
+  @apply p-4 overflow-y-auto;
+  height: calc(100vh - 80px);
+}
+
+.bias-checkbox {
+  @apply flex items-center py-3 px-2 border-b border-gray-100;
+}
+
+.bias-checkbox input[type='checkbox'] {
+  @apply h-6 w-6 mr-3 rounded border-gray-300 
+         text-blue-600 focus:ring-blue-500;
+}
+
+.checkbox-label {
+  @apply text-base;
+}
+
+.clear-filters {
+  @apply text-blue-600 text-base font-medium;
+}
+
+@media (min-width: 641px) {
+  .legend {
+    @apply bottom-20 right-4;
+    width: 300px;
+  }
+
+  .legend-bias-list {
+    @apply fixed relative inset-auto bg-transparent;
+    display: block;
+    height: auto;
+  }
+
+  .legend-bias-list.open {
+    @apply mt-4;
+  }
+
+  .bias-list-header {
+    @apply static p-0 border-none mb-2;
+  }
+
+  .bias-list-content {
+    @apply p-0;
+    height: auto;
+    max-height: 300px;
+  }
+
+  .bias-checkbox {
+    @apply py-1.5 border-none;
+  }
+
+  .bias-checkbox input[type='checkbox'] {
+    @apply h-4 w-4 mr-2;
+  }
+
+  .checkbox-label {
+    @apply text-xs;
+  }
+
+  .clear-filters {
+    @apply text-sm;
+  }
+}
+
+.legend-bias-filter {
+  @apply relative mb-3;
+}
+
+.legend-filter-button {
+  @apply w-full px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 
+         rounded-lg transition-colors duration-200 flex items-center 
+         justify-center gap-2 font-medium;
+}
+
+.legend-bias-dropdown {
+  @apply absolute bottom-full left-0 w-full bg-white rounded-lg shadow-lg 
+         mb-2 max-h-[300px] overflow-y-auto z-20;
+}
+
+.bias-option {
+  @apply w-full text-left px-3 py-2 text-sm hover:bg-gray-100 
+         transition-colors duration-200;
+}
+
+.bias-option.selected {
+  @apply bg-blue-50 text-blue-600 font-medium;
+}
+
+@media (max-width: 640px) {
+  .legend-bias-dropdown {
+    @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+           w-[90vw] max-w-[400px] max-h-[60vh] rounded-xl;
+  }
+
+  .legend-bias-dropdown::before {
+    content: '';
+    @apply fixed inset-0 bg-black/50 z-[-1];
+  }
+
+  .bias-option {
+    @apply py-3;
+  }
+}
+
+@media (max-width: 640px) {
+  .legend {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .legend:not(:hover):not(:focus-within) {
+    @apply translate-x-[calc(100%-40px)];
+  }
+}
+
+.legend-bias-section {
+  @apply mb-4;
+}
+
+.legend-divider {
+  @apply h-px bg-gray-200 my-3;
+}
+
+.selected-biases-note {
+  @apply text-gray-600;
+}
+
+@media (max-width: 640px) {
+  .legend {
+    @apply bottom-4 right-4 max-w-[calc(100vw-2rem)] w-auto min-w-[200px];
+  }
+
+  .legend-filter-button {
+    @apply py-3 text-lg;
+  }
+
+  .legend-bias-list {
+    @apply fixed inset-0 bg-white z-50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    transform: none;
+    display: none;
+  }
+
+  .legend-bias-list.open {
+    @apply block;
+    display: block;
+    padding: 1rem;
+  }
+
+  .mobile-back-button {
+    @apply sticky top-0 bg-white py-4 text-blue-600 text-lg font-medium w-full text-left;
+  }
+
+  .bias-list-header {
+    @apply sticky top-0 bg-white pb-4 border-b border-gray-200;
+  }
+
+  .bias-list-header h4 {
+    @apply text-lg font-medium;
+  }
+
+  .bias-checkbox {
+    @apply py-4 px-2 border-b border-gray-100;
+  }
+
+  .checkbox-label {
+    @apply text-base;
+  }
+
+  .hidden-mobile {
+    @apply hidden;
+  }
+
+  .bias-checkbox input[type='checkbox'] {
+    @apply h-6 w-6;
+  }
+
+  .clear-filters {
+    @apply text-base py-2;
+  }
+}
+
+@media (max-width: 640px) {
+  .legend {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .legend:not(:hover):not(:focus-within) {
+    @apply translate-x-[calc(100%-40px)];
+  }
+
+  .legend.filter-open {
+    @apply translate-x-0;
+  }
 }
 
 .legend-item {
-  @apply flex items-center my-1;
+  @apply flex items-center py-1;
 }
 
 .legend-color {
-  @apply w-5 h-5 rounded-full mr-2 border border-black/10;
+  @apply flex-shrink-0;
 }
 
 .legend-label {
   @apply text-xs;
 }
 
-/* Responsive legend */
-@media (max-width: 640px) {
-  .legend {
-    @apply translate-x-[calc(100%-40px)];
+@media (min-width: 641px) {
+  .legend-bias-list {
+    display: none;
   }
 
-  .legend:hover,
-  .legend:focus-within {
-    @apply translate-x-0;
+  .legend-bias-list.open {
+    @apply block mt-4;
   }
+}
 
-  .legend::before {
-    content: '📊';
-    @apply absolute -left-[30px] top-1/2 -translate-y-1/2 bg-white p-2 rounded-l-lg shadow-[-2px_0_4px_rgba(0,0,0,0.1)] cursor-pointer;
-  }
+.modal-wrapper {
+  @apply fixed inset-0 z-[10];
 }
