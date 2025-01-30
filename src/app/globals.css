@@ -88,3 +88,44 @@ body {
 .modal-body::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-400;
 }
+
+.legend {
+  @apply fixed bottom-20 right-4 bg-white p-2.5 rounded-lg shadow-md z-10 max-w-[200px] transition-transform duration-300 ease-in-out;
+}
+
+.legend h3 {
+  @apply m-0 text-sm font-semibold;
+}
+
+.legend h4 {
+  @apply m-0 mb-2 text-xs font-normal;
+}
+
+.legend-item {
+  @apply flex items-center my-1;
+}
+
+.legend-color {
+  @apply w-5 h-5 rounded-full mr-2 border border-black/10;
+}
+
+.legend-label {
+  @apply text-xs;
+}
+
+/* Responsive legend */
+@media (max-width: 640px) {
+  .legend {
+    @apply translate-x-[calc(100%-40px)];
+  }
+
+  .legend:hover,
+  .legend:focus-within {
+    @apply translate-x-0;
+  }
+
+  .legend::before {
+    content: '📊';
+    @apply absolute -left-[30px] top-1/2 -translate-y-1/2 bg-white p-2 rounded-l-lg shadow-[-2px_0_4px_rgba(0,0,0,0.1)] cursor-pointer;
+  }
+}

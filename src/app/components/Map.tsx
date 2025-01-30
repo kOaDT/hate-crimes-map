@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo } from 'react';
 import ReactMap, { Source, Layer } from 'react-map-gl';
 import { countryCoordinates } from '../utils/countryCoordinates';
 import CountryModal from './Modal';
+import Legend from './Legend';
 
 export interface ICrime {
   Date: string;
@@ -39,6 +40,16 @@ export default function MapComponent({ crimes }: IProps) {
       {} as Record<string, ICrime[]>
     );
   }, [crimes]);
+
+  const thresholds = [10, 50, 100, 500, 2000, 5000];
+  const colors = [
+    '#FEB24C', // light orange
+    '#FD8D3C', // orange
+    '#FC4E2A', // orange-red
+    '#E31A1C', // red
+    '#BD0026', // dark red
+    '#4A1486', // dark purple
+  ];
 
   useEffect(() => {
     setMounted(true);
@@ -94,6 +105,8 @@ export default function MapComponent({ crimes }: IProps) {
         cursor: hoveredCountry ? 'pointer' : 'default',
       }}
     >
+      <Legend thresholds={thresholds} colors={colors} />
+
       <ReactMap
         initialViewState={{
           longitude: 10,
@@ -133,7 +146,21 @@ export default function MapComponent({ crimes }: IProps) {
             type='circle'
             paint={{
               'circle-radius': ['*', ['sqrt', ['get', 'count']], 1],
-              'circle-color': '#FF0000',
+              'circle-color': [
+                'step',
+                ['get', 'count'],
+                colors[0],
+                thresholds[0],
+                colors[1],
+                thresholds[1],
+                colors[2],
+                thresholds[2],
+                colors[3],
+                thresholds[3],
+                colors[4],
+                thresholds[4],
+                colors[5],
+              ],
               'circle-opacity': 0.6,
               'circle-stroke-width': 1,
               'circle-stroke-color': '#FFFFFF',
