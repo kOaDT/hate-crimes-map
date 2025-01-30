@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hate-crimes-map.vercel.app/sitemap.xml
+Sitemap: https://www.hatecrimesmap.org/

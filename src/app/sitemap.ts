@@ -1,7 +1,7 @@
 export const dynamic = 'force-static';
 
 export default async function sitemap() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://hate-crimes-map.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.hatecrimesmap.org/';
 
   const staticPages = [
     {

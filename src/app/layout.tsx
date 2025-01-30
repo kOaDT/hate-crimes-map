@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://hate-crimes-map.vercel.app';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.hatecrimesmap.org/';
 const screenshotUrl = `${baseUrl}/screen.png`;
 
 export const metadata: Metadata = {

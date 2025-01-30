@@ -1,4 +1,4 @@
 Contact: mailto:caleb.pro@pm.me
 Preferred-Languages: en, de, fr
-Canonical: https://hate-crimes-map.vercel.app/security.txt
-Policy: https://hate-crimes-map.vercel.app/about
+Canonical: https://www.hatecrimesmap.org/security.txt
+Policy: https://www.hatecrimesmap.org/about
