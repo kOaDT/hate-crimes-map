@@ -52,9 +52,13 @@ We welcome contributions to improve this project! Here are some ways you can hel
 3. **Feature Requests**: Suggest new features or enhancements to make the platform more impactful.
 4. **Pull Requests**: Feel free to fork the repository and submit your changes via pull requests. Ensure your code follows best practices and includes necessary documentation.
 
+More information can be found in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+
 ### Open-Source Licensing
 
 This project is completely open-source. You are free to reuse, modify, or distribute the code as long as you provide appropriate credit by citing the original source (this repository).
+
+More information can be found in the [LICENSE](LICENSE) file.
 
 ---
 
