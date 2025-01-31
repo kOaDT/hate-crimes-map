@@ -21,6 +21,10 @@ Please note that this data should be interpreted with caution. The data only inc
 - Different reporting mechanisms and practices
 - Cultural and social factors affecting reporting
 
+## Disclaimer
+
+This project is not affiliated with the OSCE or any other organization.
+
 ## Technologies Used
 
 This project is built using the following technologies:
