@@ -48,9 +48,9 @@ The project prioritizes responsive design to ensure a seamless experience across
 We welcome contributions to improve this project! Here are some ways you can help:
 
 1. **Update Data**: If the dataset is outdated, follow the instructions above to convert and upload the updated file.
-2. **Report Issues**: Open an issue if you encounter bugs or have suggestions for improvement.
-3. **Feature Requests**: Suggest new features or enhancements to make the platform more impactful.
-4. **Pull Requests**: Feel free to fork the repository and submit your changes via pull requests. Ensure your code follows best practices and includes necessary documentation.
+2. **Report Issues**: Open an issue if you encounter bugs or have suggestions for improvement. Template to follow: [Issue Template](https://raw.githubusercontent.com/kOaDT/hate-crimes-map/refs/heads/develop/.github/ISSUE_TEMPLATE/bug_report.md).
+3. **Feature Requests**: Suggest new features or enhancements to make the platform more impactful. Template to follow: [Feature Request Template](https://raw.githubusercontent.com/kOaDT/hate-crimes-map/refs/heads/develop/.github/ISSUE_TEMPLATE/feature_request.md).
+4. **Pull Requests**: Feel free to fork the repository and submit your changes via pull requests. Ensure your code follows best practices and includes necessary documentation. Template to follow: [Pull Request Template](https://raw.githubusercontent.com/kOaDT/hate-crimes-map/refs/heads/develop/.github/PULL_REQUEST_TEMPLATE/pull_request_template.md).
 
 More information can be found in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 

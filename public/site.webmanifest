@@ -1,6 +1,6 @@
 {
   "name": "Hate Crimes Map",
-  "short_name": "Hate Crimes",
+  "short_name": "HCM",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,9 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone",
-  "start_url": "/",
-  "description": "Visualization of hate crime data to bring visibility to these issues"
+  "theme_color": "#171a1c",
+  "background_color": "#000000",
+  "display": "standalone"
 }
