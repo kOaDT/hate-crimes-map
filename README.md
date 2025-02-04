@@ -6,6 +6,8 @@
 
 The **Hate Crimes Map** project aims to visualize hate crime data to bring visibility to crimes that are often invisible or normalized by society. By making this data accessible and visual, we hope to contribute to a better understanding of these issues.
 
+To learn more about the project creation process, please refer to [this article](https://www.caleb-tech.blog/blog/hate-crimes-map-visualizing-hate-crime-data-for-greater-awareness).
+
 ## Data Source
 
 The data displayed in this project is sourced from the official OSCE Hate Crime Reporting database, which can be accessed here: [https://hatecrime.osce.org/hate-crime-data](https://hatecrime.osce.org/hate-crime-data).
