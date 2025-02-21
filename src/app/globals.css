@@ -1,3 +1,4 @@
+@import 'tailwindcss';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,7 +27,7 @@ body {
 }
 
 .modal-backdrop {
-  @apply fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity;
+  @apply fixed inset-0 bg-gray-500/75 transition-opacity;
   animation: fadeIn 0.2s ease-out;
 }
 
