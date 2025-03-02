@@ -27,7 +27,7 @@
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-map-gl": "^7.1.7",
+    "react-map-gl": "^7.1.9",
     "recharts": "^2.15.1"
   },
   "devDependencies": {
