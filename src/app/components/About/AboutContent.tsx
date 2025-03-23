@@ -101,7 +101,7 @@ export default function AboutContent({ pdfIsDisplayed = true }: { pdfIsDisplayed
         <p className='text-gray-600 mb-4'>
           {'To learn more about the project creation process, please refer to '}
           <a
-            href='https://www.caleb-tech.blog/blog/hate-crimes-map-visualizing-hate-crime-data-for-greater-awareness'
+            href='https://koadt.vercel.app/blog/hate-crimes-map-visualizing-hate-crime-data-for-greater-awareness/'
             className='text-blue-600 hover:text-blue-800 underline'
             target='_blank'
             rel='noopener noreferrer'
