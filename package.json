@@ -24,7 +24,7 @@
     "country-iso-2-to-3": "^1.1.0",
     "i18n-iso-countries": "^7.14.0",
     "mapbox-gl": "^3.10.0",
-    "next": "15.1.7",
+    "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-map-gl": "^7.1.9",
