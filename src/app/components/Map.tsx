@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState, useMemo } from 'react';
-import ReactMap, { Source, Layer } from 'react-map-gl';
+import { Map as ReactMap } from 'react-map-gl/mapbox';
+import { Source, Layer } from 'react-map-gl/mapbox';
+import type { FeatureCollection, Point, GeoJsonProperties } from 'geojson';
 import { countryCoordinates } from '../utils/countryCoordinates';
 import CountryModal from './Modal';
 import Legend from './Legend';
@@ -97,18 +99,18 @@ export default function MapComponent({ crimes }: IProps) {
 
   if (!mounted) return null;
 
-  const circleData = {
-    type: 'FeatureCollection',
+  const circleData: FeatureCollection<Point, GeoJsonProperties> = {
+    type: 'FeatureCollection' as const,
     features: Object.entries(crimesByCountry)
       .filter(([country]) => countryCoordinates[country])
       .map(([country, crimes]) => ({
-        type: 'Feature',
+        type: 'Feature' as const,
         properties: {
           count: crimes.length,
           country,
         },
         geometry: {
-          type: 'Point',
+          type: 'Point' as const,
           coordinates: countryCoordinates[country],
         },
       })),
