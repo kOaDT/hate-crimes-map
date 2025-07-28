@@ -20,15 +20,15 @@
   "dependencies": {
     "@types/d3": "^7.4.3",
     "@vercel/analytics": "^1.5.0",
-    "axios": "^1.10.0",
+    "axios": "^1.11.0",
     "country-iso-2-to-3": "^1.1.0",
     "i18n-iso-countries": "^7.14.0",
     "mapbox-gl": "^3.13.0",
-    "next": "15.3.4",
+    "next": "15.4.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-map-gl": "^8.0.4",
-    "recharts": "^3.0.2"
+    "recharts": "^3.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -37,10 +37,10 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-map-gl": "^6.1.7",
-    "eslint": "^9.29.0",
-    "eslint-config-next": "15.3.4",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-prettier": "^5.5.1",
+    "eslint": "^9.32.0",
+    "eslint-config-next": "15.4.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "postcss": "^8.5.6",
