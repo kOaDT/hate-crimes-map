@@ -1,7 +1,7 @@
 import IncidentMap, { ICrime } from './components/Map';
 import crimesData from '../../public/data/hcrw_incidents_all-report.json';
-import { Analytics } from '@vercel/analytics/react';
 import AboutModal from '@/app/components/About/AboutModal';
+import Script from 'next/script';
 
 interface CrimesData {
   'Report Export': ICrime[];
@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <AboutModal />
       <div className='min-h-screen relative'>
-        <Analytics />
+        <Script data-goatcounter='https://hatecrimemap.goatcounter.com/count' async src='//gc.zgo.at/count.js' />
         <IncidentMap crimes={typedCrimesData?.['Report Export'] || []} />
         <div className='absolute bottom-2 left-2 text-sm text-gray-600'>
           v{process.env.npm_package_version || '1.0.0'}

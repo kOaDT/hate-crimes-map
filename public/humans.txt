@@ -14,7 +14,7 @@ Data: OSCE Hate Crime Data
 Source: https://hatecrime.osce.org/hate-crime-data
 
 /* HOSTING */
-Hosting: Vercel
+Hosting: Netlify
 
 /* OPEN SOURCE */
 Open Source: Yes

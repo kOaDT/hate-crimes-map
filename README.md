@@ -6,8 +6,6 @@
 
 The **Hate Crimes Map** project aims to visualize hate crime data to bring visibility to crimes that are often invisible or normalized by society. By making this data accessible and visual, we hope to contribute to a better understanding of these issues.
 
-To learn more about the project creation process, please refer to [this article](https://koadt.vercel.app/blog/hate-crimes-map-visualizing-hate-crime-data-for-greater-awareness/).
-
 ## Data Source
 
 The data displayed in this project is sourced from the official OSCE Hate Crime Reporting database, which can be accessed here: [https://hatecrime.osce.org/hate-crime-data](https://hatecrime.osce.org/hate-crime-data).
@@ -39,7 +37,7 @@ This project is built using the following technologies:
 
 - **Mapbox**: Used for rendering the interactive map. To use the project locally, you will need a Mapbox API key. You can obtain one by signing up here: [https://www.mapbox.com/](https://www.mapbox.com/).
 - **Recharts**: For displaying graphical representations of the data.
-- **Vercel**: The project is hosted on Vercel's free tier and uses Vercel Analytics for tracking performance.
+- **Netlify**: The project is hosted on Netlify's free tier and uses GoatCounter Analytics for tracking performance.
 
 ## Responsive Design
 

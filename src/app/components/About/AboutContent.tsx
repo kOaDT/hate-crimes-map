@@ -81,7 +81,7 @@ export default function AboutContent({ pdfIsDisplayed = true }: { pdfIsDisplayed
 
       <section>
         <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Hosting</h2>
-        <p className='text-gray-600 mb-4'>This website is hosted on Vercel.</p>
+        <p className='text-gray-600 mb-4'>This website is hosted on Netlify.</p>
       </section>
 
       <section className='mb-8'>
@@ -97,19 +97,6 @@ export default function AboutContent({ pdfIsDisplayed = true }: { pdfIsDisplayed
           >
             GitHub Repository
           </a>
-        </p>
-        <p className='text-gray-600 mb-4'>
-          {'To learn more about the project creation process, please refer to '}
-          <a
-            href='https://koadt.vercel.app/blog/hate-crimes-map-visualizing-hate-crime-data-for-greater-awareness/'
-            className='text-blue-600 hover:text-blue-800 underline'
-            target='_blank'
-            rel='noopener noreferrer'
-            title='Hate Crimes Map - Visualizing Hate Crime Data for Greater Awareness'
-          >
-            this article
-          </a>
-          .
         </p>
       </section>
 
