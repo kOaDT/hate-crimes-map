@@ -1,20 +1,43 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import IncidentMap, { ICrime } from './components/Map';
-import crimesData from '../../public/data/hcrw_incidents_all-report.json';
 import AboutModal from '@/app/components/About/AboutModal';
 import Script from 'next/script';
 
 interface CrimesData {
   'Report Export': ICrime[];
 }
-const typedCrimesData = crimesData as CrimesData;
 
 export default function Home() {
+  const [crimes, setCrimes] = useState<ICrime[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/data/hcrw_incidents_all-report.json')
+      .then((res) => res.json())
+      .then((data: CrimesData) => {
+        setCrimes(data?.['Report Export'] || []);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error loading crimes data:', error);
+        setIsLoading(false);
+      });
+  }, []);
+
   return (
     <>
       <AboutModal />
       <div className='min-h-screen relative'>
         <Script data-goatcounter='https://hatecrimemap.goatcounter.com/count' async src='//gc.zgo.at/count.js' />
-        <IncidentMap crimes={typedCrimesData?.['Report Export'] || []} />
+        {isLoading ? (
+          <div className='flex items-center justify-center h-screen'>
+            <div className='text-gray-600'>Loading map data...</div>
+          </div>
+        ) : (
+          <IncidentMap crimes={crimes} />
+        )}
         <div className='absolute bottom-2 left-2 text-sm text-gray-600'>
           v{process.env.npm_package_version || '1.0.0'}
         </div>
