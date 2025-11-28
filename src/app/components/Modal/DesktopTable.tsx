@@ -70,7 +70,10 @@ export default function DesktopTable({ data }: { data: ICrime[] }) {
             </thead>
             <tbody className='divide-y divide-gray-700'>
               {currentData.map((crime, idx) => (
-                <tr key={`${crime.Date}-${idx}`} className='bg-gray-800/50 hover:bg-gray-700/50 transition-colors'>
+                <tr
+                  key={`${crime.Date}-${idx}`}
+                  className='bg-gray-800/50 hover:bg-gray-700/50 transition-colors cursor-default'
+                >
                   <td className='px-4 py-3 whitespace-nowrap'>{crime.Date}</td>
                   <td className='px-4 py-3'>{crime['Type of incident']}</td>
                   <td className='px-4 py-3'>{crime['Bias motivations']}</td>
@@ -93,7 +96,7 @@ export default function DesktopTable({ data }: { data: ICrime[] }) {
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className='px-3 py-1 rounded bg-gray-700 text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors'
+            className='px-3 py-1 rounded bg-gray-700 text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors cursor-pointer'
           >
             Previous
           </button>
@@ -103,7 +106,7 @@ export default function DesktopTable({ data }: { data: ICrime[] }) {
           <button
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className='px-3 py-1 rounded bg-gray-700 text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors'
+            className='px-3 py-1 rounded bg-gray-700 text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors cursor-pointer'
           >
             Next
           </button>

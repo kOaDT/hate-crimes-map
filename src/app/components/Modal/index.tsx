@@ -50,7 +50,7 @@ export default function CountryModal({ country, data, onClose }: CountryModalPro
 
   return (
     <div
-      className='fixed inset-0 bg-black/40 flex items-center justify-center md:p-4'
+      className='fixed inset-0 bg-black/40 flex items-center justify-center md:p-4 cursor-pointer'
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           onClose();
@@ -60,7 +60,7 @@ export default function CountryModal({ country, data, onClose }: CountryModalPro
       <div className='relative w-full h-full md:h-auto md:max-h-[90vh] max-w-[95rem] bg-black/90 p-4 sm:p-6 md:rounded-lg flex flex-col overflow-hidden'>
         <button
           onClick={onClose}
-          className='absolute right-4 top-4 z-10 p-2 rounded-full bg-gray-800/50 hover:bg-gray-800 transition-colors'
+          className='absolute right-4 top-4 z-10 p-2 rounded-full bg-gray-800/50 hover:bg-gray-800 transition-colors cursor-pointer'
           aria-label='Close modal'
         >
           <svg

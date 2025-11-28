@@ -8,9 +8,10 @@ export default function AboutModal() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const hasSeenModal = localStorage.getItem('hasSeenAboutModal');
     if (!hasSeenModal) {
-      setIsOpen(true);
+      Promise.resolve().then(() => setIsOpen(true));
     }
   }, []);
 
@@ -24,7 +25,7 @@ export default function AboutModal() {
   return createPortal(
     <div className='modal-overlay' aria-labelledby='modal-title' role='dialog' aria-modal='true'>
       <div className='modal-container'>
-        <div className='modal-backdrop' onClick={closeModal} />
+        <div className='modal-backdrop cursor-pointer' onClick={closeModal} />
         <div className='modal-content'>
           <button onClick={closeModal} className='modal-close-button' aria-label='Close modal'>
             <svg className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
@@ -32,7 +33,7 @@ export default function AboutModal() {
             </svg>
           </button>
           <div className='modal-body'>
-            <AboutContent pdfIsDisplayed={false} />
+            <AboutContent />
           </div>
         </div>
       </div>

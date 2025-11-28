@@ -1,7 +1,6 @@
 # Open Source and Contributing
 
-The Hate Crimes Map is entirely open source, and contributions are welcome!  
-If you’re a developer passionate about data visualization or social justice, you're in the right place.
+The Hate Crimes Map is entirely open source, and contributions are welcome!
 
 ## Here’s how you can contribute:
 
@@ -14,7 +13,7 @@ If you’re a developer passionate about data visualization or social justice, y
 3. **Submit a pull request with your improvements.**  
    Once your changes are ready, open a pull request to suggest them for inclusion in the main project.
 
-We look forward to your contributions! 🌍
+We look forward to your contributions!
 
 👉 [Hate Crimes Map](https://hatecrimesmap.org)
 
@@ -33,4 +32,4 @@ The project prioritizes responsive design to ensure a seamless experience across
 
 ## Disclaimer
 
-This project is not affiliated with the OSCE or any other organization.
+This project is not affiliated with the OSCE, the ODIHR or any other organization.

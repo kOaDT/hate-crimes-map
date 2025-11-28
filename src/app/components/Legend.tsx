@@ -22,7 +22,7 @@ export default function Legend({ thresholds, colors, biasMotivations, selectedBi
   return (
     <div className='legend'>
       <div className='legend-content'>
-        <button className='legend-filter-button' onClick={() => setIsFilterOpen(!isFilterOpen)}>
+        <button className='legend-filter-button cursor-pointer' onClick={() => setIsFilterOpen(!isFilterOpen)}>
           <span role='img' aria-label='filter'>
             ☰
           </span>
@@ -31,12 +31,12 @@ export default function Legend({ thresholds, colors, biasMotivations, selectedBi
 
         <div className={`legend-bias-list ${isFilterOpen ? 'open' : ''}`}>
           <div className='bias-list-header'>
-            <button className='mobile-back-button' onClick={() => setIsFilterOpen(false)}>
+            <button className='mobile-back-button cursor-pointer' onClick={() => setIsFilterOpen(false)}>
               ← Back
             </button>
             <h4>Filter by bias motivation</h4>
             {selectedBiases.length > 0 && (
-              <button className='clear-filters' onClick={() => onBiasChange([])}>
+              <button className='clear-filters cursor-pointer' onClick={() => onBiasChange([])}>
                 Clear all
               </button>
             )}
@@ -44,7 +44,7 @@ export default function Legend({ thresholds, colors, biasMotivations, selectedBi
 
           <div className='bias-list-content'>
             {biasMotivations.map((bias) => (
-              <label key={bias} className='bias-checkbox'>
+              <label key={bias} className='bias-checkbox cursor-pointer'>
                 <input type='checkbox' checked={selectedBiases.includes(bias)} onChange={() => toggleBias(bias)} />
                 <span className='checkbox-label'>{bias}</span>
               </label>
