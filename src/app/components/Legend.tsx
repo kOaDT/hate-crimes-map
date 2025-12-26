@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 
 interface LegendProps {
   thresholds: number[];
-  colors: string[];
+  circleColor: string;
   biasMotivations: string[];
   selectedBiases: string[];
   onBiasChange: (biases: string[]) => void;
 }
 
-export default function Legend({ thresholds, colors, biasMotivations, selectedBiases, onBiasChange }: LegendProps) {
+export default function Legend({
+  thresholds,
+  circleColor,
+  biasMotivations,
+  selectedBiases,
+  onBiasChange,
+}: LegendProps) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const toggleBias = (bias: string) => {
@@ -67,27 +73,32 @@ export default function Legend({ thresholds, colors, biasMotivations, selectedBi
               )}
             </h4>
 
-            {thresholds.map((threshold, i) => (
-              <div key={i} className='legend-item'>
-                <div
-                  className='legend-color'
-                  style={{
-                    backgroundColor: colors[i],
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50%',
-                    marginRight: '8px',
-                  }}
-                ></div>
-                <span className='legend-label'>
-                  {i === 0
-                    ? `< ${threshold}`
-                    : i === thresholds.length - 1
-                      ? `> ${thresholds[i - 1]}`
-                      : `${thresholds[i - 1]} - ${threshold}`}
-                </span>
-              </div>
-            ))}
+            {thresholds.map((threshold, i) => {
+              const size = i === 0 ? 8 : i === 1 ? 12 : i === 2 ? 16 : i === 3 ? 24 : i === 4 ? 32 : 48;
+              return (
+                <div key={i} className='legend-item'>
+                  <div
+                    className='legend-color'
+                    style={{
+                      backgroundColor: circleColor,
+                      width: `${size}px`,
+                      height: `${size}px`,
+                      borderRadius: '50%',
+                      marginRight: '8px',
+                      border: '1.5px solid #FFFFFF',
+                      opacity: 0.7,
+                    }}
+                  ></div>
+                  <span className='legend-label'>
+                    {i === 0
+                      ? `< ${threshold}`
+                      : i === thresholds.length - 1
+                        ? `> ${thresholds[i - 1]}`
+                        : `${thresholds[i - 1]} - ${threshold}`}
+                  </span>
+                </div>
+              );
+            })}
           </>
         )}
       </div>

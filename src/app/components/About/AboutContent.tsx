@@ -65,6 +65,17 @@ export default function AboutContent() {
       </section>
 
       <section className='mb-8'>
+        <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Design</h2>
+        <p className='text-gray-600 mb-4'>
+          The visualization design draws inspiration from pandemic tracking systems, such as the Johns Hopkins
+          Coronavirus Resource Center. The dark background with red circles of varying sizes creates a visual parallel
+          between hate crimes and disease outbreaks, emphasizing their systemic nature and global reach. This design
+          choice aims to highlight how hate crimes, like epidemics, spread through communities and require urgent
+          awareness, prevention, and intervention.
+        </p>
+      </section>
+
+      <section className='mb-8'>
         <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Privacy Policy</h2>
         <p className='text-gray-600 mb-4'>
           We are committed to protecting your privacy. This website does not collect any personal data from its

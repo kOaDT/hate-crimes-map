@@ -22,7 +22,7 @@ interface IProps {
 }
 
 export default function MapComponent({ crimes }: IProps) {
-  const [mounted, setMounted] = useState(false);
+  const [mounted] = useState(() => typeof window !== 'undefined');
   const [loaded, setLoaded] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
@@ -63,18 +63,7 @@ export default function MapComponent({ crimes }: IProps) {
   }, [crimes, selectedBiases]);
 
   const thresholds = [10, 50, 100, 500, 1000, 5000];
-  const colors = [
-    '#FEB24C', // light orange
-    '#FD8D3C', // orange
-    '#FC4E2A', // orange-red
-    '#E31A1C', // red
-    '#BD0026', // dark red
-    '#4A1486', // dark purple
-  ];
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const circleColor = '#FF1A1A';
 
   useEffect(() => {
     if (!selectedCountry) return;
@@ -128,7 +117,7 @@ export default function MapComponent({ crimes }: IProps) {
     >
       <Legend
         thresholds={thresholds}
-        colors={colors}
+        circleColor={circleColor}
         biasMotivations={topBiasMotivations}
         selectedBiases={selectedBiases}
         onBiasChange={setSelectedBiases}
@@ -144,7 +133,7 @@ export default function MapComponent({ crimes }: IProps) {
         }}
         style={{ width: '100%', height: '100%' }}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
-        mapStyle='mapbox://styles/mapbox/outdoors-v12'
+        mapStyle='mapbox://styles/mapbox/dark-v11'
         reuseMaps
         interactiveLayerIds={loaded ? ['circles'] : []}
         onLoad={() => setLoaded(true)}
@@ -172,25 +161,30 @@ export default function MapComponent({ crimes }: IProps) {
             id='circles'
             type='circle'
             paint={{
-              'circle-radius': ['*', ['sqrt', ['get', 'count']], 1],
-              'circle-color': [
-                'step',
+              'circle-radius': [
+                'interpolate',
+                ['linear'],
                 ['get', 'count'],
-                colors[0],
-                thresholds[0],
-                colors[1],
-                thresholds[1],
-                colors[2],
-                thresholds[2],
-                colors[3],
-                thresholds[3],
-                colors[4],
-                thresholds[4],
-                colors[5],
+                0,
+                4,
+                10,
+                8,
+                50,
+                12,
+                100,
+                16,
+                500,
+                24,
+                1000,
+                32,
+                5000,
+                48,
               ],
-              'circle-opacity': 0.6,
+              'circle-color': circleColor,
+              'circle-opacity': 0.7,
               'circle-stroke-width': 1,
-              'circle-stroke-color': '#FFFFFF',
+              'circle-stroke-color': '#991B1B',
+              'circle-stroke-opacity': 1,
             }}
           />
         </Source>

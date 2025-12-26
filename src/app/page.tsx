@@ -32,13 +32,13 @@ export default function Home() {
       <div className='min-h-screen relative'>
         <Script data-goatcounter='https://hatecrimemap.goatcounter.com/count' async src='//gc.zgo.at/count.js' />
         {isLoading ? (
-          <div className='flex items-center justify-center h-screen'>
-            <div className='text-gray-600'>Loading map data...</div>
+          <div className='flex items-center justify-center h-screen bg-black'>
+            <div className='text-gray-300'>Loading map data...</div>
           </div>
         ) : (
           <IncidentMap crimes={crimes} />
         )}
-        <div className='absolute bottom-2 left-2 text-sm text-gray-600'>
+        <div className='absolute bottom-2 left-2 text-sm text-gray-300 z-10'>
           v{process.env.npm_package_version || '1.0.0'}
         </div>
         <a
