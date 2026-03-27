@@ -19,30 +19,30 @@
   },
   "dependencies": {
     "@types/d3": "^7.4.3",
-    "axios": "^1.13.5",
+    "axios": "^1.14.0",
     "country-iso-2-to-3": "^1.1.0",
     "i18n-iso-countries": "^7.14.0",
-    "mapbox-gl": "^3.19.0",
-    "next": "^16.1.6",
+    "mapbox-gl": "^3.20.0",
+    "next": "^16.2.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-map-gl": "^8.1.0",
-    "recharts": "^3.7.0"
+    "recharts": "^3.8.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.2.1",
+    "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^10.0.2",
-    "eslint-config-next": "16.1.6",
+    "eslint": "^10.1.0",
+    "eslint-config-next": "16.2.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "postcss": "^8.5.6",
+    "lint-staged": "^16.4.0",
+    "postcss": "^8.5.8",
     "prettier": "^3.8.1",
-    "tailwindcss": "^4.2.1",
-    "typescript": "^5"
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6"
   }
 }
