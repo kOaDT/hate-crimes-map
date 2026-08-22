@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@types/d3": "7.4.3",
-    "axios": "1.18.0",
+    "axios": "1.19.0",
     "country-iso-2-to-3": "1.1.0",
     "i18n-iso-countries": "7.14.0",
     "mapbox-gl": "3.24.1",
@@ -27,11 +27,11 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-map-gl": "8.1.2",
-    "recharts": "3.8.1"
+    "recharts": "3.10.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.3",
-    "@types/node": "25.0.10",
+    "@types/node": "25.9.5",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
     "eslint": "10.2.1",
@@ -41,7 +41,7 @@
     "husky": "9.1.7",
     "lint-staged": "16.4.0",
     "postcss": "8.5.26",
-    "prettier": "3.8.3",
+    "prettier": "3.9.6",
     "tailwindcss": "4.3.3",
     "typescript": "6.0.3"
   }
